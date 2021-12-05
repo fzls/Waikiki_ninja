@@ -425,6 +425,10 @@ module.exports = class User {
   }
 
   async #getNickname(nocheck) {
+    if (process.env.NINJA_DISABLE_CHECK == "true") {
+      nocheck = true
+    }
+
     let body;
     let body_bak;
     body = await api({
